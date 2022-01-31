@@ -5,10 +5,12 @@ const userControllers = require("../controllers/userControllers");
 
 const auth = require("../auth");
 
-const {verify} = auth; 
+const {verify,verifyAdmin} = auth; 
 
 
 router.post("/",userControllers.registerUser);
+
+router.post("/login",userControllers.loginUser);
 
 
 

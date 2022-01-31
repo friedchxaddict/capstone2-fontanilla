@@ -4,6 +4,8 @@ const Product = require("../models/Product");
 
 const bcrypt = require("bcrypt");
 
+const auth = require("../auth");
+
 
 module.exports.registerUser = (req,res) => {
 	console.log(req.body);
@@ -26,4 +28,35 @@ const hashedPW = bcrypt.hashSync(req.body.password,10);
 	.catch(err => res.send(err));
 
 }
+
+module.exports.loginUser = (req,res) => {
+
+	console.log(req.body);
+
+	User.findOne({email:req.body.email})
+	.then(foundUser => {
+
+		if(foundUser === null){
+			return res.send("No User Found.")
+		}else {
+			const isPasswordCorrect = bcrypt.compareSync(req.body.password,foundUser.password);
+			console.log(isPasswordCorrect);
+
+			if(isPasswordCorrect){
+				return res.send({accessToken: auth.createAccessToken(foundUser)})
+			}else {
+				return res.send("Incorrect Password.")
+			}
+
+		}
+
+	})
+	.catch(err => res.send(err));
+
+}
+
+
+
+
+
 

@@ -23,7 +23,7 @@ app.use('/users',userRoutes);
 
 const productRoutes = require('./routes/productRoutes');
 
-//app.use('/products',productRoutes);
+app.use('/products',productRoutes);
 
 const orderRoutes = require('./routes/orderRoutes')
 
