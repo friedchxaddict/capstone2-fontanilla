@@ -33,3 +33,48 @@ module.exports.getSingleProduct = (req, res) => {
 	.then(result => res.send(result))
 	.catch(err => res.send(err));
 }
+
+module.exports.updateProduct = (req,res) => {
+
+	let updates = {
+
+		name:req.body.name,
+		description: req.body.description,
+		price:req.body.price
+	}
+
+	Product.findByIdAndUpdate(req.params.id,updates,{new:true})
+	.then(updateProduct => res.send(updateProduct))
+	.catch(err => res.send(err));
+
+}
+
+module.exports.archiveProduct = (req,res) => {
+
+	let updates = {
+
+		isActive:false
+	}
+
+	Product.findByIdAndUpdate(req.params.id,updates,{new:true})
+	.then(results => res.send(results))
+	.catch(err => res.send(err));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

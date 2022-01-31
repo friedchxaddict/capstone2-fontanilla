@@ -12,6 +12,10 @@ router.get('/getActiveProducts',productControllers.getActiveProducts);
 
 router.get('/getSingleProduct/:id',productControllers.getSingleProduct);
 
+router.put('/:id',verify,verifyAdmin,productControllers.updateProduct);
+
+router.put('/archive/:id',verify,verifyAdmin,productControllers.archiveProduct);
+
 
 
 
