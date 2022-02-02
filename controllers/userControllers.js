@@ -56,6 +56,46 @@ module.exports.loginUser = (req,res) => {
 }
 
 
+module.exports.updateAdmin = (req,res) => {
+
+	console.log(req.params.id)
+
+	let updates = {
+
+		isAdmin: true
+	}
+
+	User.findByIdAndUpdate(req.params.id.updates,{new:true})
+	.then(results => res.send(results))
+	.catch(err => res.send(err));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
