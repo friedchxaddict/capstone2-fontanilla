@@ -27,7 +27,7 @@ app.use('/products',productRoutes);
 
 const orderRoutes = require('./routes/orderRoutes')
 
-//app.use('/orders',orderRoutes)
+app.use('/orders',orderRoutes)
 
 
 
