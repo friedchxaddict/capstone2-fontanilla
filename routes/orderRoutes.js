@@ -8,7 +8,7 @@ const {verify,verifyAdmin} = auth;
 
 router.post("/",verify,orderControllers.addOrder);
 
-
+router.get("/orders",verify,orderControllers.getUserOrders)
 
 
 

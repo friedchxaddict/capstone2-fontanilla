@@ -12,7 +12,7 @@ router.post("/",userControllers.registerUser);
 
 router.post("/login",userControllers.loginUser);
 
-//router.put("/updateAdmin/:id",verify,verifyAdmin,userControllers.updateAdmin)
+router.put("/updateAdmin/:id",verify,verifyAdmin,userControllers.updateAdmin)
 
 
 

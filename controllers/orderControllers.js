@@ -4,33 +4,43 @@ const Product = require("../models/Product");
 
 module.exports.addOrder = (req,res) => {
 
-	
-
 	let newOrder = new Order({
 
 		userId: req.user.id,
 		totalAmount: req.body.totalAmount,
 		products: req.body.products
-			
-			
+
 	});
 
-	let isProductUpdated = Product.findById(req.body.products[0].productId).then(product =>{
+	newOrder.products.forEach(products => {
+		
+		console.log(products)
+		
+		let isProductUpdated = Product.findById(products.productId).then(product =>{
 
+			//console.log(products)
 
-	let addOrder = {
+			let addOrder = {
 
-		orderId: newOrder.Id,
-		quantity: req.body.products[0].productId
-	}  
+				orderId: newOrder.userId,
+				quantity: products.quantity
+			}  
 
-	product.orders.push(addOrder);
+			//console.log(addOrder)
 
-	return product.save().then(product => true).catch(err => err.message)
+		product.orders.push(addOrder)
 
-	})
+		return product.save().then(product => true).catch(err => err.message)
 
-	
+		})
+
+	});
+
+	newOrder.save()
+	.then(order => res.send(order))
+	.catch(err => res.send(err));
+
+}	
 
 	//console.log(req.body.products[0].productId)
 	
@@ -51,4 +61,17 @@ module.exports.addOrder = (req,res) => {
 	//newOrder.save()
 	//.then(results => res.send(results))
 	//.catch(err => res.send(err))
-}
+
+	module.exports.getUserOrders = (req,res) => {
+
+		console.log(req.body)
+		//Order.findById(req.user.id)
+		//.then(result => res.send(result))
+		//.catch(err => res.send(err));
+	}
+
+
+
+
+
+
