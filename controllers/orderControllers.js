@@ -2,6 +2,8 @@ const Order = require("../models/Order");
 
 const Product = require("../models/Product");
 
+const User = require("../models/User");
+
 module.exports.addOrder = (req,res) => {
 
 	let newOrder = new Order({
@@ -44,15 +46,7 @@ module.exports.addOrder = (req,res) => {
 
 	//console.log(req.body.products[0].productId)
 	
-
-
-
 	//console.log(newOrder)
-
-	
-
-
-	
 
 	//Product.findById({productId:req.body.productId})
 	//.then(result => res.send(result))
@@ -62,14 +56,23 @@ module.exports.addOrder = (req,res) => {
 	//.then(results => res.send(results))
 	//.catch(err => res.send(err))
 
+	
+
 	module.exports.getUserOrders = (req,res) => {
 
-		console.log(req.body)
-		//Order.findById(req.user.id)
-		//.then(result => res.send(result))
-		//.catch(err => res.send(err));
+		//console.log(req.user)
+		Order.find({userId: req.user.id})
+		.then(result => res.send(result))
+		.catch(err => res.send(err));
 	}
 
+
+	module.exports.getAllOrders = (req,res) => {
+
+		Order.find({})
+		.then(result => res.send(result))
+		.catch(err => res.send(err));
+	}
 
 
 

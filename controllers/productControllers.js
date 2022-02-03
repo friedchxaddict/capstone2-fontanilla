@@ -62,8 +62,24 @@ module.exports.archiveProduct = (req,res) => {
 
 }
 
+module.exports.activateProduct = (req,res) => {
+	
+	let updates = {
+		
+		isActive: true
+	}
 
+	Product.findByIdAndUpdate(req.params.id,updates,{new:true})
+	.then(results => res.send(results))
+	.catch(err => res.send(err));
+}
 
+module.exports.getOrderProducts = (req,res) => {
+
+	Product.findById({orderId: req.params.orderId})
+	.then(result => res.send(result.products))
+	.catch(err => res.send(err));
+}
 
 
 
