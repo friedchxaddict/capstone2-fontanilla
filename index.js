@@ -16,7 +16,7 @@ let db = mongoose.connection;
 db.on("error",console.error.bind(console, "Connection Error"));
 db.once("open",()=>console.log("Connected to MongoDB"));
 
-app.use.(cors());
+app.use(cors());
 app.use(express.json());
 
 const userRoutes = require('./routes/userRoutes');
