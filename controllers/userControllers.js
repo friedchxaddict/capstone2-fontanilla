@@ -65,7 +65,7 @@ module.exports.updateAdmin = (req,res) => {
 		isAdmin: true
 	}
 
-	User.findByIdAndUpdate(req.params.id.updates,{new:true})
+	User.findByIdAndUpdate(req.params.id,updates,{new:true})
 	.then(results => res.send(results))
 	.catch(err => res.send(err));
 }

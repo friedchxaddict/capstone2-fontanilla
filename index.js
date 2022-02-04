@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
-const port = 4000
+const port = process.env.PORT || 4000
 
 mongoose.connect("mongodb+srv://adrian:adrian@cluster0.1nbs0.mongodb.net/Capstone2?retryWrites=true&w=majority",
 
@@ -15,6 +16,7 @@ let db = mongoose.connection;
 db.on("error",console.error.bind(console, "Connection Error"));
 db.once("open",()=>console.log("Connected to MongoDB"));
 
+app.use.(cors());
 app.use(express.json());
 
 const userRoutes = require('./routes/userRoutes');
