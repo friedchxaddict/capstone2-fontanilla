@@ -18,7 +18,8 @@ db.once("open",()=>console.log("Connected to MongoDB"));
 
 const corsOptions = {
 
-	origin: "http://localhost:3000",
+	origin: ["http://localhost:3000",
+		"https://lucid-archimedes-80313a.netlify.app"],
 	optionsSuccessStatus: 200
 }
 
