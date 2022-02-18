@@ -14,6 +14,9 @@ const productSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, "Price is required."]
 	},
+	url: {
+		type: String,
+	},
 	isActive: {
 		type: Boolean,
 		default: true

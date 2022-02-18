@@ -10,12 +10,13 @@ module.exports.addProduct = (req,res) => {
 		name: req.body.name,
 		description: req.body.description,
 		price: req.body.price,
+		url: req.body.url
 
 	});
 
 	newProduct.save()
-	.then(product => res.send(product))
-	.catch(err => res.send(err))
+	.then(product => console.log(product))
+	.catch(err => console.log(err))
 }
 
 module.exports.getActiveProducts = (req,res) => {
@@ -80,6 +81,15 @@ module.exports.getOrderProducts = (req,res) => {
 	.then(result => res.send(result.products))
 	.catch(err => res.send(err));
 }
+
+module.exports.getAllProducts = (req,res) => {
+
+		Product.find({})
+		.then(result => res.send(result))
+		.catch(err => res.send(err));
+	}
+
+
 
 
 

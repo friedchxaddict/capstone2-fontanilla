@@ -73,9 +73,19 @@ module.exports.updateAdmin = (req,res) => {
 
 
 
+module.exports.getUserDetails = (req,res) => {
+
+	console.log(req.user);
+	
+
+	
+	User.findById(req.user.id)
+	.then(result => res.send(result))
+	.catch(err => res.send(err));
 
 
 
+}
 
 
 
